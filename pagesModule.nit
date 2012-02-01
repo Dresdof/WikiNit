@@ -16,24 +16,66 @@ class Pages
 		pages.push(page)	
 	end
 	
-	fun findPage(pageLink: Link): Page do
+	fun findPage(pageLink: String): Page do
+		var link = new Link(pageLink)
+		
+		var pageFound = new Page
+		
+		var found = false
+		
+		while not found do 
+			for currentPage in pages do
+				if currentPage.name.link.length == link.link.length then
+					var nodeMatch = false
+				
+					for i in [0..currentPage.name.link.length] do
+						if currentPage.name.link[i] == link.link[i] then
+							nodeMatch = true
+						else 
+							nodeMatch = false
+						end						
+					end
+					
+					if nodeMatch then
+						pageFound = currentPage
+						found = true
+					end
+				end
+			end
+		end
+		return pageFound
+	end
+	
+	fun resolveLink(pageLink: String, parentLink: String): Page do
 		return new Page
 	end
 	
-	fun removePage(pageLink: Link) do
+	fun removePage(pageLink: String) do
+		var link = new Link(pageLink)
 		
 	end
 	
-	fun getPageLinks(pageLink: Link): List[Page] do
+	fun getPageLinks(pageLink: String): List[Page] do
+		var link = new Link(pageLink)		
+			
 		return new List[Page]
 	end
 	
-	fun getSuperPages(pageLink: Link): List[Page] do
+	fun getSuperPages(pageLink: String): List[Page] do
+		var link = new Link(pageLink)
+			
 		return new List[Page]
 	end
 	
-	fun getDirectSubPages(pageLink: Link): List[Page] do
+	fun getDirectSubPages(pageLink: String): List[Page] do
+		var link = new Link(pageLink)
+			
 		return new List[Page]
 	end
 	
+	fun getPageBacklinks(pageLink: String): List[Page] do
+		var link = new Link(pageLink)
+			
+		return new List[Page]
+	end
 end
