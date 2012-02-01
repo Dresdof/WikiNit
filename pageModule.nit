@@ -18,21 +18,21 @@ class Page
 		self.links = new List[Link]
 	end
 	
-	init withContentAndName (content: String, name: String) do
-		self.content = content
+	init withNameAndContent (name: String, content: String) do
 		self.name = new Link(name)
+		self.content = content
 		self.links = new List[Link]
 	end
 	
-	init withContentNameAndMultipleLinks (content: String, name: String, links: List[Link]) do
-		self.content = content
+	init withNameContentAndMultipleLinks (name: String, content: String, links: List[Link]) do
 		self.name = new Link(name)
+		self.content = content
 		self.links = links
 	end
 		
-	init withContentNameAndUniqueLink (content: String, name: String, link: Link) do
-		self.content = content
+	init withNameContentAndUniqueLink (name: String, content: String,link: Link) do
 		self.name = new Link(name)
+		self.content = content
 		self.links = new List[Link]
 		self.links.push(link)
 	end

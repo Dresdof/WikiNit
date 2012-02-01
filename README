@@ -1,0 +1,2 @@
+Compilation instruction (my nit compiler is in Home) : 
+~/nit/bin/nitc testProgram.nit
