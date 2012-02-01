@@ -30,11 +30,12 @@ class Page
 		self.links = links
 	end
 		
-	init withNameContentAndUniqueLink (name: String, content: String,link: Link) do
+	init withNameContentAndUniqueLink (name: String, content: String, link: String) do
 		self.name = new Link(name)
 		self.content = content
+		
 		self.links = new List[Link]
-		self.links.push(link)
+		self.links.push(new Link(link))
 	end
 		
 	fun addLink (link: Link) do
