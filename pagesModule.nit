@@ -53,7 +53,12 @@ class Pages
 	end
 	
 	fun removePage(pageLink: String) do
-		var link = new Link(pageLink)
+		
+		var page = findPage(pageLink)
+		
+		if page != null then
+			pages.remove(page)
+		end
 		
 	end
 	
