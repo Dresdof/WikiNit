@@ -3,7 +3,7 @@ module pageModule
 import linkModule
 
 # Defines a page
-class Page : nullable
+class Page
 	
 	# Content of the page
 	var content: String

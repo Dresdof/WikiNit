@@ -28,5 +28,4 @@ class Link
 	
 		return stringList
 	end
-
 end

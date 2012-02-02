@@ -16,7 +16,7 @@ class Pages
 		pages.push(page)	
 	end
 	
-	fun findPage(pageLink: String): Page do
+	fun findPage(pageLink: String): nullable Page do
 		var link = new Link(pageLink)
 		
 		var pageFound = new Page
@@ -26,12 +26,10 @@ class Pages
 		while not found do 
 			for currentPage in pages do
 				if currentPage.name.link.length == link.link.length then
-					var nodeMatch = false
+					var nodeMatch = true
 				
 					for i in [0..currentPage.name.link.length] do
-						if currentPage.name.link[i] == link.link[i] then
-							nodeMatch = true
-						else 
+						if currentPage.name.link[i] != link.link[i] then
 							nodeMatch = false
 						end						
 					end
@@ -43,7 +41,11 @@ class Pages
 				end
 			end
 		end
-		return pageFound
+		if found then
+			return pageFound
+		else
+			return null
+		end
 	end
 	
 	fun resolveLink(pageLink: String, parentLink: String): Page do
