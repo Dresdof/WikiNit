@@ -3,7 +3,7 @@ module pageModule
 import linkModule
 
 # Defines a page
-class Page
+class Page : nullable
 	
 	# Content of the page
 	var content: String
@@ -43,11 +43,6 @@ class Page
 	end
 	
 	fun removeLink (link: Link) do
-		#for currentLink in links do
-		#	if currentLink.link == link.link then
-		#		currentLink.delete
-		#	end
-		#end
 		self.links.remove(link)
 	end
 	
