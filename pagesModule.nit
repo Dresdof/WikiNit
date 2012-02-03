@@ -108,4 +108,18 @@ class Pages
 			
 		return new List[Page]
 	end
+	
+	redef fun to_s: String do
+		var str = ""
+		
+		if pages.length == 0 then
+			str += "One does not simply print inexistent pages."
+		else
+		str += "Pages list : \n\n"
+			for page in pages do
+				str += page.to_s + "\n"
+			end
+		end
+		return str
+	end
 end

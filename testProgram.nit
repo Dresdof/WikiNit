@@ -61,18 +61,11 @@ var superTototatatete = pages.getSuperPages("toto/tata/tete")
 	# Not yet implemented
 var directSubToto = pages.getDirectSubPages("toto")
 
-#print new Page.withNameContentAndUniqueLink("Troll", "You Don't Say ?", "überPageDude").to_s
 
-var strList = new List[String]
-strList.add("link/to/page")
-strList.add("link/to/page/path")
-strList.add("we/love/links")
+#for page in pages.pages do
+#	print page
+#end
 
-
-pages.addPage(new Page.withNameContentAndMultipleLinks("Multiple/links/page", "Awesome dude content", strList ))
-
-for page in pages.pages do
-	print page
-end
+print pages.to_s
 
 print "Everything went better than expected."
