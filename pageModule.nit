@@ -46,4 +46,11 @@ class Page
 		self.links.remove(link)
 	end
 	
+	redef fun to_s: String do
+	#	var str: String
+	#	
+	#	str = self.name.to_s + "\n"
+	#	str += "Content : " + 
+	return "Nothing here yet, sir."
+	end
 end

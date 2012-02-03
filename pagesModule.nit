@@ -16,8 +16,7 @@ class Pages
 		pages.push(page)	
 	end
 	
-	fun findPage(pageLink: String): nullable Page do
-		var link = new Link(pageLink)
+	fun findPage(link: Link): nullable Page do
 		
 		var pageFound = new Page
 		
@@ -48,13 +47,17 @@ class Pages
 		end
 	end
 	
-	fun resolveLink(pageLink: String, parentLink: String): Page do
+	private fun resolveLink(link: Link, parentLink: Link): Page do
 		return new Page
+	end
+	
+	private fun isLinkResolvable(link: Link, parentLink: Link): Bool do
+		return false
 	end
 	
 	fun removePage(pageLink: String) do
 		
-		var page = findPage(pageLink)
+		var page = findPage(new Link(pageLink))
 		
 		if page != null then
 			pages.remove(page)
@@ -62,10 +65,30 @@ class Pages
 		
 	end
 	
-	fun getPageLinks(pageLink: String): List[Page] do
-		var link = new Link(pageLink)		
-			
-		return new List[Page]
+	fun getPageLinks(pageLink: String): nullable List[Page] do
+		
+		var page = findPage(new Link(pageLink))
+		var links = new List[Link]
+		var pages = new List[Page]
+		var empty = true
+		
+		if page != null then
+			links = page.links
+			empty = false
+		end
+		
+		for link in links do
+			if isLinkResolvable(link, new Link(pageLink)) then
+				pages.push(resolveLink(link, new Link(pageLink)))
+			end
+		end
+		
+		if not empty then
+			return pages
+		else
+			return null
+		end
+
 	end
 	
 	fun getSuperPages(pageLink: String): List[Page] do
