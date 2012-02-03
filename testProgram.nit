@@ -1,5 +1,3 @@
-module testProgram
-
 import pagesModule
 
 var pages = new Pages()
@@ -47,7 +45,7 @@ pages.removePage("tutu")
 # afficher les chemins et contenus des pages liées par "toto/tata" et "titi"
 	# Not yet implemented
 tototata = pages.getPageLinks("toto/tata")
-titi = pages.getPageLinks("titi")
+#titi = pages.getPageLinks("titi")
 
 # créer une page "toto" de contenu "Toto" sans lien
 pages.addPage(new Page.withNameAndContent("toto", "Toto"))
@@ -62,3 +60,19 @@ var superTototatatete = pages.getSuperPages("toto/tata/tete")
 # afficher la liste des sous-pages directes de la page "toto"
 	# Not yet implemented
 var directSubToto = pages.getDirectSubPages("toto")
+
+#print new Page.withNameContentAndUniqueLink("Troll", "You Don't Say ?", "überPageDude").to_s
+
+var strList = new List[String]
+strList.add("link/to/page")
+strList.add("link/to/page/path")
+strList.add("we/love/links")
+
+
+pages.addPage(new Page.withNameContentAndMultipleLinks("Multiple/links/page", "Awesome dude content", strList ))
+
+for page in pages.pages do
+	print page
+end
+
+print "Everything went better than expected."

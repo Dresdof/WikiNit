@@ -18,7 +18,7 @@ class Pages
 	
 	fun findPage(link: Link): nullable Page do
 		
-		var pageFound = new Page
+		var pageFound = new Page		
 		
 		var found = false
 		
@@ -26,8 +26,8 @@ class Pages
 			for currentPage in pages do
 				if currentPage.name.link.length == link.link.length then
 					var nodeMatch = true
-				
-					for i in [0..currentPage.name.link.length] do
+
+					for i in [0..currentPage.name.link.length - 1] do						
 						if currentPage.name.link[i] != link.link[i] then
 							nodeMatch = false
 						end						
@@ -66,7 +66,7 @@ class Pages
 	end
 	
 	fun getPageLinks(pageLink: String): nullable List[Page] do
-		
+
 		var page = findPage(new Link(pageLink))
 		var links = new List[Link]
 		var pages = new List[Page]

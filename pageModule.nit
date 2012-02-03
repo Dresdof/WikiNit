@@ -15,6 +15,8 @@ class Page
 	var links: List[Link]
 	
 	init () do
+		self.content = ""
+		self.name = new Link("")
 		self.links = new List[Link]
 	end
 	
@@ -24,10 +26,14 @@ class Page
 		self.links = new List[Link]
 	end
 	
-	init withNameContentAndMultipleLinks (name: String, content: String, links: List[Link]) do
+	init withNameContentAndMultipleLinks (name: String, content: String, links: List[String]) do
 		self.name = new Link(name)
 		self.content = content
-		self.links = links
+		self.links = new List[Link]
+		
+		for str in links do
+			self.links.push(new Link(str))
+		end
 	end
 		
 	init withNameContentAndUniqueLink (name: String, content: String, link: String) do
@@ -47,10 +53,21 @@ class Page
 	end
 	
 	redef fun to_s: String do
-	#	var str: String
-	#	
-	#	str = self.name.to_s + "\n"
-	#	str += "Content : " + 
-	return "Nothing here yet, sir."
+		var str = ""
+		str += "#----------------------#\n"
+		str += "Name : "
+		str += self.name.to_s + "\n"
+		str += "Content : " + self.content
+		
+		if links.length == 0 then
+			str += "\n No link contained in this page."
+		else
+			for lnk in links do
+				str += "\n" + " - Link : " + lnk.to_s
+			end
+		end
+		str += "\n#----------------------#\n"
+	
+		return str
 	end
 end

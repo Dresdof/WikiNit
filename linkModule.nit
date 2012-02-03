@@ -29,5 +29,16 @@ class Link
 		return stringList
 	end
 
+	redef fun to_s: String do
+		var str = link[0]
+		
+		for i in [1..link.length - 1] do
+			str += "/"
+			str += link[i]
+		end
+		
+		return str
+	end
+
 end
 
