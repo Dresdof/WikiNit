@@ -16,7 +16,7 @@ class Link
 	private fun buildLink(string: String) : List[String] do
 		var stringList = new List[String]
 	
-		while string.length >= 0 do
+		while string.length > 0 do
 			if string.index_of('/') > -1 then
 				stringList.push(string.substring(0, string.index_of('/')))
 				string = string.substring_from(string.index_of('/') + 1)
