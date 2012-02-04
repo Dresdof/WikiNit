@@ -17,29 +17,27 @@ class Pages
 	end
 	
 	fun findPage(link: Link): nullable Page do
-		
 		var pageFound = new Page		
-		
 		var found = false
 		
-		while not found do 
-			for currentPage in pages do
+		for currentPage in pages do		
+			if not found then
 				if currentPage.name.link.length == link.link.length then
-					var nodeMatch = true
-
+					var nodesMatch = true
 					for i in [0..currentPage.name.link.length - 1] do						
 						if currentPage.name.link[i] != link.link[i] then
-							nodeMatch = false
+							nodesMatch = false
 						end						
 					end
-					
-					if nodeMatch then
+
+					if nodesMatch then		
 						pageFound = currentPage
 						found = true
 					end
 				end
 			end
 		end
+		
 		if found then
 			return pageFound
 		else
@@ -47,12 +45,31 @@ class Pages
 		end
 	end
 	
-	private fun resolveLink(link: Link, parentLink: Link): Page do
-		return new Page
-	end
-	
-	private fun isLinkResolvable(link: Link, parentLink: Link): Bool do
-		return false
+	private fun resolveLink(link: Link, parentLink: Link): nullable Page do
+		var found = false
+		var concatenatedLink = new Link("")
+		var page = new nullable Page
+		var parentLength = parentLink.link.length
+		
+		for i in [0..parentLength] do
+			if not found then
+				concatenatedLink.setLink("")
+				concatenatedLink.link.append(parentLink.link)
+				concatenatedLink.link.append(link.link)
+				
+				page = findPage(concatenatedLink)
+			
+				if page != null then found = true
+
+				if not parentLink.link.is_empty then parentLink.link.pop
+			end
+		end
+		
+		if found then
+			return page
+		else 
+			return null
+		end
 	end
 	
 	fun removePage(pageLink: String) do
@@ -78,9 +95,8 @@ class Pages
 		end
 		
 		for link in links do
-			if isLinkResolvable(link, new Link(pageLink)) then
-				pages.push(resolveLink(link, new Link(pageLink)))
-			end
+			var pageFound = resolveLink(link, new Link(pageLink))
+			if pageFound != null then pages.push(pageFound)
 		end
 		
 		if not empty then
@@ -113,9 +129,9 @@ class Pages
 		var str = ""
 		
 		if pages.length == 0 then
-			str += "One does not simply print inexistent pages."
+			str = "One does not print inexistent pages."
 		else
-		str += "Pages list : \n\n"
+		str = "Pages list : \n\n"
 			for page in pages do
 				str += page.to_s + "\n"
 			end
