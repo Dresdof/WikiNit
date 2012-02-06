@@ -73,12 +73,9 @@ class Pages
 	end
 	
 	fun removePage(pageLink: String) do
-		
 		var page = findPage(new Link(pageLink))
-		
 		if page == null then return
-
-		pages.remove(page)		
+		pages.remove(page)
 	end
 	
 	fun getPageLinks(pageLink: String): nullable List[Page] do
@@ -100,12 +97,19 @@ class Pages
 	end
 	
 	fun getSuperPages(pageLink: String): nullable List[Page] do
-		var page = findPage(new Link(pageLink))
+		var link = new Link(pageLink)
+		var pages = new List[Page]
+		var pageTmp: nullable Page
 		
-		if page == null then return null
+		link.link.pop
 		
+		while not link.link.is_empty do
+			pageTmp = findPage(link)
+			if pageTmp != null then pages.push(pageTmp)
+			link.link.pop
+		end
 		
-		return new List[Page]
+		if pages.is_empty then return null else return pages
 	end
 	
 	fun getDirectSubPages(pageLink: String): nullable List[Page] do

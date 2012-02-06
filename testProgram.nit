@@ -71,8 +71,7 @@ pages.addPage(new Page.withNameAndContent("toto/tata/tete", "Tete"))
 
 # afficher la liste des super-pages de la page "toto/tata/tete"
 print "Super pages : 'toto/tata/tete'"
-print "Cette fonctionnalité est encore dans le néant."
-#print pages.getSuperPages("toto/tata/tete").to_s
+print pages.getSuperPages("toto/tata/tete").to_s
 
 # afficher la liste des sous-pages directes de la page "toto"
 print "Sous pages directes : 'toto'"
