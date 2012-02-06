@@ -5,7 +5,7 @@ import pageModule
 # Contains the list of all created pages
 class Pages
 
-	# All pages
+	# Pages created since the programs start
 	var pages: List[Page]
 	
 	init() do
@@ -16,6 +16,8 @@ class Pages
 		pages.push(page)	
 	end
 	
+	# Returns a page from a link
+	# Returns null if no page has been found
 	fun findPage(link: Link): nullable Page do
 		var pageFound = new Page		
 		var found = false
@@ -45,6 +47,8 @@ class Pages
 		end
 	end
 	
+	# Returns the deepest page in the tree starting from a parent's adress
+	# Returns null if no page has been found
 	private fun resolveLink(link: Link, parentLink: Link): nullable Page do
 		var found = false
 		var concatenatedLink = new Link("")
@@ -72,12 +76,15 @@ class Pages
 		end
 	end
 	
+	# Removes the argument page from the collection
 	fun removePage(pageLink: String) do
 		var page = findPage(new Link(pageLink))
 		if page == null then return
 		pages.remove(page)
 	end
 	
+	# Returns the pages linked by the argument page
+	# Returns null if no page has been found
 	fun getPageLinks(pageLink: String): nullable List[Page] do
 
 		var page = findPage(new Link(pageLink))
@@ -96,6 +103,8 @@ class Pages
 		return pages	
 	end
 	
+	# Returns pages from the parent nodes of the argument page
+	# Returns null if no page has been found
 	fun getSuperPages(pageLink: String): nullable List[Page] do
 		var link = new Link(pageLink)
 		var pages = new List[Page]
@@ -112,6 +121,8 @@ class Pages
 		if pages.is_empty then return null else return pages
 	end
 	
+	# Returns pages having the same path as the argument page plus one element
+	# Returns null if no page has been found
 	fun getDirectSubPages(pageLink: String): nullable List[Page] do
 		var link = new Link(pageLink)
 		var pages = new List[Page]
@@ -131,6 +142,8 @@ class Pages
 		if pages.is_empty then return null else return pages
 	end
 	
+	# Find pages having a link to the argument page
+	# Returns null if no page has been found
 	fun getReversedLinks(pageLink: String): nullable List[Page] do
 		var link = new Link(pageLink)
 		var pages = new List[Page]
@@ -144,6 +157,7 @@ class Pages
 		if pages.is_empty then return null else return pages
 	end
 	
+	# Display all pages from collection
 	redef fun to_s: String do
 		var str = ""
 		
