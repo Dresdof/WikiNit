@@ -75,7 +75,6 @@ print pages.getSuperPages("toto/tata/tete").to_s
 
 # afficher la liste des sous-pages directes de la page "toto"
 print "Sous pages directes : 'toto'"
-print "Cette fonctionnalité est encore dans le néant."
-#print pages.getDirectSubPages("toto").to_s
+print pages.getDirectSubPages("toto").to_s
 
 print "\nEverything went better than expected. "

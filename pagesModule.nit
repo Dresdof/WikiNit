@@ -114,18 +114,30 @@ class Pages
 	
 	fun getDirectSubPages(pageLink: String): nullable List[Page] do
 		var link = new Link(pageLink)
+		var pages = new List[Page]
 		
+		for currentPage in self.pages do
+			if currentPage.name.link.length == link.link.length + 1 then
+				var nodeMatch = true
+				
+				for i in [0..link.link.length - 1] do
+					if currentPage.name.link[i] != link.link[i] then nodeMatch = false
+				end
+				
+				if nodeMatch then pages.push(currentPage)
+			end
+		end
 		
-		
-		return new List[Page]
+		if pages.is_empty then return null else return pages
 	end
 	
 	fun getPageBacklinks(pageLink: String): nullable List[Page] do
 		var link = new Link(pageLink)
+		var pages = new List[Page]
 		
 		
 		
-		return new List[Page]
+		if pages.is_empty then return null else return pages
 	end
 	
 	redef fun to_s: String do
