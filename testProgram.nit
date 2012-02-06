@@ -4,8 +4,7 @@ var pages = new Pages()
 
 # créer une page "foo" de contenu "Foo" et qui a un lien "bar"
 pages.addPage(new Page.withNameContentAndUniqueLink("foo", "Foo", "bar"))
-print ""
-print "Créer 'foo' lie 'bar'"
+print "\nCréer 'foo' lie 'bar'"
 
 # créer une page "bar" de contenu "Bar" sans lien
 pages.addPage(new Page.withNameAndContent("bar", "Bar"))

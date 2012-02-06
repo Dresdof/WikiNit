@@ -53,7 +53,7 @@ class Pages
 		
 		for i in [0..parentLength] do
 			if not found then
-				concatenatedLink.setLink("")
+				concatenatedLink = new Link("")
 				concatenatedLink.link.append(parentLink.link)
 				concatenatedLink.link.append(link.link)
 				

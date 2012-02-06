@@ -2,17 +2,14 @@ module linkModule
 
 class Link
 
+	# List of the nodes
 	var link: List[String]
 
 	init (string: String) do
 		self.link = buildLink(string)
 	end
-
-	fun setLink(string: String) do
-		self.link = buildLink(string)
-	end
 	
-	# Divide the argument string into a string list
+	# Divide the argument string into a node list
 	private fun buildLink(string: String) : List[String] do
 		var stringList = new List[String]
 	
@@ -29,6 +26,7 @@ class Link
 		return stringList
 	end
 
+	# Used for node per node comparison in self.link
 	redef fun ==(o) do
 		if not o isa Link or o is null then return false
 			if o.link.length != self.link.length then return false
@@ -39,6 +37,9 @@ class Link
 		return true
 	end
 
+	# Displays the link in a more readable way than the List definition of to_s
+	# ex :	tototata
+	# 		toto/tata
 	redef fun to_s: String do
 		var str = link[0]
 		
