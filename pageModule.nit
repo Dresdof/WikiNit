@@ -2,13 +2,11 @@ module pageModule
 
 import linkModule
 
-# Defines a page
 class Page
 	
-	# Content of the page
 	var content: String
 	
-	# Page's own link
+	# Page's name and own link
 	var name: Link
 	
 	# Links to other pages
@@ -26,6 +24,14 @@ class Page
 		self.links = new List[Link]
 	end
 	
+	init withNameContentAndUniqueLink (name: String, content: String, link: String) do
+		self.name = new Link(name)
+		self.content = content
+		
+		self.links = new List[Link]
+		self.links.push(new Link(link))
+	end
+	
 	init withNameContentAndMultipleLinks (name: String, content: String, links: List[String]) do
 		self.name = new Link(name)
 		self.content = content
@@ -36,14 +42,6 @@ class Page
 		end
 	end
 		
-	init withNameContentAndUniqueLink (name: String, content: String, link: String) do
-		self.name = new Link(name)
-		self.content = content
-		
-		self.links = new List[Link]
-		self.links.push(new Link(link))
-	end
-		
 	fun addLink (link: Link) do
 		links.push(link)
 	end
@@ -52,6 +50,7 @@ class Page
 		self.links.remove(link)
 	end
 	
+	# Displays the elements of the page in a formatted way.
 	redef fun to_s: String do
 		var str = ""
 		str += "#----------------------#\n"
