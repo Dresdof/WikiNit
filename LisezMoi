@@ -1,0 +1,33 @@
+Instruction pour la compilation : 
+~/nit/bin/nitc testProgram.nit
+
+Liste des réponses attendues au programme de test : 
+
+# Créer 'foo' lie 'bar'
+# Créer 'bar'
+
+# liens 'foo' : 'bar'
+
+# Créer 'toto/tata' lie 'tutu'
+# Créer 'titi' lie 'tutu'
+# Créer 'tutu'
+
+# liens 'toto/tata' : 'tutu'
+# liens 'titi' : 'tutu'
+liens inverses 'tutu' : 'toto/tata', 'titi'
+
+# Créer 'toto/tutu'
+
+# liens 'toto/tata' : 'toto/tutu'
+# liens 'titi' : 'tutu'
+
+# Supprimer 'tutu'
+
+liens 'toto/tata' : 'toto/tutu'
+liens 'titi' : (nope)
+
+# Créer 'toto'
+# Créer 'toto/tata/tete'
+
+Super pages 'toto/tata/tete' : 'toto', 'toto/tata'
+Sous pages 'toto' : 'toto/tata', 'toto/tutu'
