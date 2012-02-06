@@ -4,55 +4,62 @@ var pages = new Pages()
 
 # créer une page "foo" de contenu "Foo" et qui a un lien "bar"
 pages.addPage(new Page.withNameContentAndUniqueLink("foo", "Foo", "bar"))
+print ""
+print "Page 'foo' créée."
 
 # créer une page "bar" de contenu "Bar" sans lien
 pages.addPage(new Page.withNameAndContent("bar", "Bar"))
-
-var leMec = pages.getPageLinks("foo")
-
-print "Page mère : "
-print pages.findPage(new Link("foo")).to_s
-print "Page fille : "
-print leMec.to_s
+print "Page 'bar' créée."
 
 # afficher les chemins et contenus des pages liées par "foo"
-	# Not implemented yet
-#var fooPages = pages.getPageLinks("foo")
+print "\nLiens de la Page 'foo' : "
+print pages.getPageLinks("foo").to_s
 
 # créer une page "toto/tata" de contenu "Tata" et qui a un lien "tutu"
 pages.addPage(new Page.withNameContentAndUniqueLink("toto/tata", "Tata", "tutu"))
+print "Page 'toto/tata' créée."
 
 # créer une page "titi" de contenu "Titi" et qui a un lien "tutu"
 pages.addPage(new Page.withNameContentAndUniqueLink("titi", "Titi", "tutu"))
+print "Page 'titi' créée."
 
 # créer une page "tutu" de contenu "Tutu" sans lien
 pages.addPage(new Page.withNameAndContent("tutu", "Tutu"))
+print "Page 'tutu' créée."
 
 # afficher les chemins et contenus des pages liées par "toto/tata" et "titi"
-	# Not implemented yet
-#var tototata = pages.getPageLinks("toto/tata")
-#var titi = pages.getPageLinks("titi")
+print "\nLiens de la Page 'toto/tata' : "
+print pages.getPageLinks("toto/tata").to_s
+
+print "\nLiens de la Page 'titi' : "
+print pages.getPageLinks("titi").to_s
 
 # afficher les chemins et contenus des pages qui lient "tutu"
 	# Not implemented yet
 #var tutu = pages.getPageBacklinks("tutu")
 
 # créer une page "toto/tutu" de contenu "Tutu2" sans lien
+print "Page 'toto/tutu' créée."
 pages.addPage(new Page.withNameAndContent("toto/tutu", "Tutu2"))
 
 # afficher les chemins et contenus des pages liées par "toto/tata" et "titi"
-	# Not yet implemented
-#tototata = pages.getPageLinks("toto/tata")
-#titi = pages.getPageLinks("titi")
+print "\nLiens de la Page 'toto/tata' : "
+print pages.getPageLinks("toto/tata").to_s
+
+print "\nLiens de la Page 'titi' : "
+print pages.getPageLinks("titi").to_s
 
 # supprimer la page "tutu"
-	# Not yet implemented
-#pages.removePage("tutu")
+print "Page 'tutu' supprimée"
+pages.removePage("tutu")
 
 # afficher les chemins et contenus des pages liées par "toto/tata" et "titi"
-	# Not yet implemented
-#tototata = pages.getPageLinks("toto/tata")
-#titi = pages.getPageLinks("titi")
+print "\nLiens de la Page 'toto/tata' : "
+print pages.getPageLinks("toto/tata").to_s
+
+print "\nLiens de la Page 'titi' : "
+print "(Aucun lien)"
+print pages.getPageLinks("titi").to_s
 
 # créer une page "toto" de contenu "Toto" sans lien
 pages.addPage(new Page.withNameAndContent("toto", "Toto"))
