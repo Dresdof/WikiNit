@@ -76,6 +76,16 @@ class Pages
 		end
 	end
 	
+	# Returns true if the page has been found and renamed
+	# Returns false if the page has not been found
+	fun renamePage(pageLink: String, newName: String): Bool do
+		var page = findPage(new Link(pageLink))
+		if page == null then return false
+		 
+		page.rename(newName)
+		return true
+	end
+	
 	# Removes the argument page from the collection
 	fun removePage(pageLink: String) do
 		var page = findPage(new Link(pageLink))

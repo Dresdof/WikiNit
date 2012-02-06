@@ -50,6 +50,10 @@ class Page
 		self.links.remove(link)
 	end
 	
+	fun rename (newName: String) do
+		self.name = new Link(newName)
+	end
+	
 	# Displays the elements of the page in a formatted way.
 	redef fun to_s: String do
 		var str = ""
