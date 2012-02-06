@@ -29,6 +29,16 @@ class Link
 		return stringList
 	end
 
+	redef fun ==(o) do
+		if not o isa Link or o is null then return false
+			if o.link.length != self.link.length then return false
+			
+			for i in [0..self.link.length - 1] do
+				if o.link[i] != self.link[i] then return false
+			end
+		return true
+	end
+
 	redef fun to_s: String do
 		var str = link[0]
 		
