@@ -35,8 +35,8 @@ print "\nLiens 'titi' : "
 print pages.getPageLinks("titi").to_s
 
 # afficher les chemins et contenus des pages qui lient "tutu"
-	# Not implemented yet
-#var tutu = pages.getPageBacklinks("tutu")
+print "Liens inverses 'tutu' : "
+print pages.getReversedLinks("tutu").to_s
 
 # créer une page "toto/tutu" de contenu "Tutu2" sans lien
 print "Créer 'toto/tutu'"
@@ -46,7 +46,7 @@ pages.addPage(new Page.withNameAndContent("toto/tutu", "Tutu2"))
 print "\nLiens 'toto/tata' : "
 print pages.getPageLinks("toto/tata").to_s
 
-print "\nLiens 'titi' : "
+print "Liens 'titi' : "
 print pages.getPageLinks("titi").to_s
 
 # supprimer la page "tutu"
@@ -66,7 +66,7 @@ print "Créer 'toto'"
 pages.addPage(new Page.withNameAndContent("toto", "Toto"))
 
 # créer une page "toto/tata/tete" de contenu "Tete" sans lien
-print "Créer 'toto/tata/tete'"
+print "Créer 'toto/tata/tete'\n"
 pages.addPage(new Page.withNameAndContent("toto/tata/tete", "Tete"))
 
 # afficher la liste des super-pages de la page "toto/tata/tete"

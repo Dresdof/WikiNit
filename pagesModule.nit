@@ -131,11 +131,15 @@ class Pages
 		if pages.is_empty then return null else return pages
 	end
 	
-	fun getPageBacklinks(pageLink: String): nullable List[Page] do
+	fun getReversedLinks(pageLink: String): nullable List[Page] do
 		var link = new Link(pageLink)
 		var pages = new List[Page]
 		
-		
+		for currentPage in self.pages do
+			for currentLink in currentPage.links do
+				if currentLink == link then pages.push(currentPage)
+			end
+		end
 		
 		if pages.is_empty then return null else return pages
 	end

@@ -60,7 +60,7 @@ class Page
 		str += "Content : " + self.content
 		
 		if links.length == 0 then
-			str += "\n No link contained in this page."
+			str += "\n No link in this page."
 		else
 			for lnk in links do
 				str += "\n" + " - Link : " + lnk.to_s
