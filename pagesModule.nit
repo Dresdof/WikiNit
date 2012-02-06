@@ -57,6 +57,7 @@ class Pages
 		
 		for i in [0..parentLength] do
 			if not found then
+			
 				concatenatedLink = new Link("")
 				concatenatedLink.link.append(parentLink.link)
 				concatenatedLink.link.append(link.link)
@@ -142,6 +143,7 @@ class Pages
 				var nodeMatch = true
 				
 				for i in [0..link.link.length - 1] do
+					# Node per node comparison on a portion of the link
 					if currentPage.name.link[i] != link.link[i] then nodeMatch = false
 				end
 				
