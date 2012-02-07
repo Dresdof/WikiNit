@@ -18,7 +18,7 @@ class Pages
 	
 	# Returns a page from a link
 	# Returns null if no page has been found
-	fun findPage(link: Link): nullable Page do
+	private fun findPage(link: Link): nullable Page do
 		var pageFound = new Page		
 		var found = false
 		
