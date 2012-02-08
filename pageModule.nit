@@ -42,12 +42,12 @@ class Page
 		end
 	end
 		
-	fun addLink (link: Link) do
-		links.push(link)
+	fun addLink (link: String) do
+		links.push(new Link(link))
 	end
 	
-	fun removeLink (link: Link) do
-		self.links.remove(link)
+	fun removeLink (link: String) do
+		self.links.remove(new Link(link))
 	end
 	
 	fun rename (newName: String) do
