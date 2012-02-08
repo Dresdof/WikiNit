@@ -23,28 +23,16 @@ class Pages
 		var found = false
 		
 		for currentPage in pages do		
-			if not found then
-				if currentPage.name.link.length == link.link.length then
-					var nodesMatch = true
-					for i in [0..currentPage.name.link.length - 1] do						
-						if currentPage.name.link[i] != link.link[i] then
-							nodesMatch = false
-						end						
-					end
-
-					if nodesMatch then		
-						pageFound = currentPage
-						found = true
-					end
+			if currentPage.name.link.length == link.link.length then
+				if currentPage.name == link then 
+					pageFound = currentPage
+					found = true
+					break
 				end
 			end
 		end
 		
-		if found then
-			return pageFound
-		else
-			return null
-		end
+		if found then return pageFound else return null
 	end
 	
 	# Returns the deepest page in the tree starting from a parent's adress
@@ -70,11 +58,7 @@ class Pages
 			end
 		end
 		
-		if found then
-			return page
-		else 
-			return null
-		end
+		if found then return page return null
 	end
 	
 	# Returns true if the page has been found and renamed
