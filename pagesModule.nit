@@ -1,5 +1,4 @@
 module pagesModule
-
 import pageModule
 
 # Contains the list of all created pages

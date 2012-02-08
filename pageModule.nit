@@ -1,5 +1,4 @@
 module pageModule
-
 import linkModule
 
 class Page
