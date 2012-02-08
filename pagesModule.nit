@@ -57,7 +57,7 @@ class Pages
 			end
 		end
 		
-		if found then return page return null
+		if found then return page else return null
 	end
 	
 	# Returns true if the page has been found and renamed
